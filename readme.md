@@ -61,22 +61,18 @@ Client Request → A2A Server → Judge Agent → SQL Agent → Mask Agent → C
 
 ### Starting the Servers
 
-Run the `run_servers.py` script to start all A2A servers:
+Run the `adk web` script to run the chat interface:
 
 ```bash
-python ./servers/run_servers.py
+adk web
 ```
 
 This will start:
 - Judge Server (port 10002)
 - Mask Server (port 10003)
 - SQL Server (port 10004)
+- MCP Server
 
-Run the `server_mcp.py` script to start MCP server:
-
-```bash
-python ./servers/server_mcp.py
-```
 
 ### Making Requests
 
