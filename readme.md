@@ -54,8 +54,8 @@ Client Request → A2A Server → Judge Agent → SQL Agent → Mask Agent → C
 
 1. Clone the repository
 2. Install dependencies: `pip install -r requirements.txt`
-3. Configure API keys in environment variables (or use secret manager)
-4. Initialize the database with sample data
+3. Configure API keys in environment variables (even better, use secret manager)
+4. Have fun
 
 ## Usage
 
@@ -64,7 +64,7 @@ Client Request → A2A Server → Judge Agent → SQL Agent → Mask Agent → C
 Run the `run_servers.py` script to start all A2A servers:
 
 ```bash
-python run_servers.py
+python ./servers/run_servers.py
 ```
 
 This will start:
@@ -72,21 +72,22 @@ This will start:
 - Mask Server (port 10003)
 - SQL Server (port 10004)
 
+Run the `server_mcp.py` script to start MCP server:
+
+```bash
+python ./servers/server_mcp.py
+```
+
 ### Making Requests
 
-Use the `a2a_client.py` module to make requests to the pipeline:
+Run the `query_MCP_ADK_A2A.py` script to query the multi-agent system:
 
-```python
-import asyncio
-from a2a_client import call_a2a_agent
-
-async def main():
-    query = "What's the average salary for Machine Learning Engineers?"
-    result = await call_a2a_agent(query, host="localhost", port=10002, stream=False)
-    print(f"Result: {result}")
-
-asyncio.run(main())
+```bash
+python ./clients/query_MCP_ADK_A2A.py
 ```
+
+This will use the `a2a_client.py` module to make requests to the pipeline:
+
 
 ## Core Files
 
@@ -127,11 +128,20 @@ agent = LlmAgent(
 - Input sanitation with whitelist approach
 - Model Armor API integration for additional protection
 
+
+## Documentation
+
+Check out the [Agent Development Kit Documentation](https://google.github.io/adk-docs/).
+Check out the [A2A Protocol Documentation](https://google.github.io/A2A/#/documentation).
+Check out the [MCP Server Documentation](https://modelcontextprotocol.io/introduction).
+
+
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Submit a pull request with comprehensive description
+4. Pray I have available time to take care of it
 
 
 *This project demonstrates integration between A2A protocol and MCP server capabilities, creating a secure and flexible agent architecture for data processing.*
