@@ -30,7 +30,7 @@ async def get_tools_async():
             connection_params=StdioServerParameters(
                 command='python',  # Command to run the server
                 args=[
-                    "server_mcp.py"  # Your existing MCP server
+                    "./servers/server_mcp.py"  # Your existing MCP server
                 ],
             )
         )

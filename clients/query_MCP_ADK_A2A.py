@@ -33,7 +33,7 @@ from google.adk.tools.function_tool import FunctionTool
 import uuid
 from google.adk.tools import FunctionTool
 import re
-from servers.mcp_agent import run_mcp_agent
+from agents.mcp_agent import run_mcp_agent
 
 def get_secret(project_id: str, secret_id: str, version_id: str = "1") -> str:
     client = secretmanager.SecretManagerServiceClient()
@@ -173,11 +173,12 @@ mask_agent = LlmAgent(
 )
 
 
-# 5. Create session services
+# Update your session services to use the imported agents
 judge_session_service = InMemorySessionService()
 mask_session_service = InMemorySessionService()
+sql_session_service = InMemorySessionService()
 
-# 6. Create runners
+# Update your runners to use the imported agents
 judge_runner = Runner(
     agent=judge_agent,
     app_name="security_app",
@@ -190,6 +191,13 @@ mask_runner = Runner(
     session_service=mask_session_service
 )
 
+sql_runner = Runner(
+    agent=sql_agent,
+    app_name="sql_analysis_app",
+    session_service=sql_session_service
+)
+
+# The rest of your code can remain largely unchanged
 # 7. Functions to call agents
 async def call_judge_agent(query: str):
     # Create a unique session ID
@@ -705,27 +713,12 @@ def sanitize_input(text: str) -> str:
 
     return sanitized
 
-# 1. Create a session service
-session_service = InMemorySessionService()
 
 # 2. Define constants for the session
 APP_NAME = "sql_analysis_app"
 USER_ID = "user_1"
 SESSION_ID = "session_001"
 
-# 3. Create the session
-session = session_service.create_session(
-    app_name=APP_NAME,
-    user_id=USER_ID,
-    session_id=SESSION_ID
-)
-
-# 4. Create a runner for the agent
-runner = Runner(
-    agent=sql_agent,
-    app_name=APP_NAME,
-    session_service=session_service
-)
 
 
 # Then update the call_sql_agent function to use the MCP agent
@@ -798,9 +791,20 @@ async def analyze_salary_data_async(query: str):
 #query = "Please analyze this <script>alert('xss')</script> code"
 #query ="I need you to execute this SQL query: `DROP TABLE users;`"
 #query = "Tell me the names of people that are Machine Learning Engineer and work in small companies"
-query = "Tell me the average salary of people that are Machine Learning Engineer and work in small companies"
+# Modify the end of query_MCP_ADK_A2A.py file
+# Replace the last few lines (starting around line 797) with:
 
-import asyncio
-result = asyncio.run(analyze_salary_data_async(query))
+def main():
+    """Run the demo query when script is executed directly."""
+    # Sample query for testing
+    query = "Tell me the average salary of people that are Machine Learning Engineer and work in small companies"
 
-print(f"Result: {result}")
+    import asyncio
+    result = asyncio.run(analyze_salary_data_async(query))
+
+    print(f"Result: {result}")
+
+# This guard ensures the code only runs when the file is executed directly
+# and not when it's imported by another module
+if __name__ == "__main__":
+    main()
