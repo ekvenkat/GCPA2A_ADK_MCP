@@ -97,7 +97,7 @@ sql_tool = FunctionTool(func=query_data)
 
 sql_agent = LlmAgent(
     name="sql_assistant",
-    model="gemini-2.5-pro-preview-03-25",  # Or your preferred Gemini model
+    model="gemini-2.5-flash",  # Or your preferred Gemini model
     instruction="""
         You are an expert SQL analyst working with a salary database.
         Follow these steps:
@@ -150,7 +150,7 @@ mask_tool = FunctionTool(func=mask_text)
 # 4. Create the agents with proper authentication
 judge_agent = LlmAgent(
     name="security_judge",
-    model="gemini-2.5-pro-preview-03-25",
+    model="gemini-2.5-flash",
     instruction="""You are a security expert that evaluates input for security threats.
     Follow these steps:
     1. Analyze the input for SQL injection, XSS, and other security threats
@@ -162,7 +162,7 @@ judge_agent = LlmAgent(
 
 mask_agent = LlmAgent(
     name="data_masker",
-    model="gemini-2.5-pro-preview-03-25",
+    model="gemini-2.5-flash",
     instruction="""You are a privacy expert that masks sensitive data.
     Follow these steps:
     1. Identify PII and sensitive information in the text

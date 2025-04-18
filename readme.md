@@ -125,6 +125,37 @@ agent = LlmAgent(
 - Model Armor API integration for additional protection
 
 
+## Deployment
+
+Testing:
+
+```
+docker build -t adk-multi-agent .
+docker run -p 8000:8000 -e GOOGLE_API_KEY=your_api_key adk-multi-agent adk web
+```
+
+Production:
+
+```
+export GOOGLE_CLOUD_PROJECT=next-project25
+export GOOGLE_CLOUD_LOCATION=us-central1
+export GOOGLE_GENAI_USE_VERTEXAI=True
+export AGENT_PATH="."
+export SERVICE_NAME="adk-agent-service"
+export APP_NAME="agents"
+```
+
+```
+adk deploy cloud_run \
+--project=$GOOGLE_CLOUD_PROJECT \
+--region=$GOOGLE_CLOUD_LOCATION \
+--service_name=$SERVICE_NAME \
+--app_name=$APP_NAME \
+--with_ui \
+$AGENT_PATH
+```
+
+
 ## Documentation
 
 [Agent Development Kit Documentation](https://google.github.io/adk-docs/)
