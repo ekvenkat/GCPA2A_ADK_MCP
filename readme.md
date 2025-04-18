@@ -133,10 +133,5 @@ agent = LlmAgent(
 2. Create a feature branch
 3. Submit a pull request with comprehensive description
 
-## License
-
-[Specify your license here]
-
----
 
 *This project demonstrates integration between A2A protocol and MCP server capabilities, creating a secure and flexible agent architecture for data processing.*
