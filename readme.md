@@ -2,36 +2,6 @@
 
 This project implements a security-focused data processing pipeline using the Agent-to-Agent (A2A) protocol combined with Model Context Protocol (MCP) integration. The system provides secure database queries through a multi-agent architecture.
 
-## Directory Structure
-
-A2A_ADK_MCP
-├── clients
-│   ├── __init__.py
-│   ├── a2a_client.py
-│   └── query_MCP_ADK_A2A.py
-├── data
-│   └── Updated_Salaries_Data.csv
-├── evaluation
-│   ├── security_test_results.json
-│   ├── simple_evaluator.py
-│   ├── test_config.json
-│   └── test_scenarios.json
-├── examples
-│   └── adk_tutorial.ipynb
-├── servers
-│   ├── __init__.py
-│   ├── a2a_servers.py
-│   ├── mcp_agent.py
-│   ├── run_servers.py
-│   ├── server_mcp.py
-│   └── task_manager.py
-├── utils
-│   ├── __init__.py
-│   ├── types2.py
-│   └── utils.py
-├── readme.md
-└── salaries.db
-
 ## System Architecture
 
 The system utilizes a layered architecture:
@@ -163,10 +133,5 @@ agent = LlmAgent(
 2. Create a feature branch
 3. Submit a pull request with comprehensive description
 
-## License
-
-[Specify your license here]
-
----
 
 *This project demonstrates integration between A2A protocol and MCP server capabilities, creating a secure and flexible agent architecture for data processing.*
