@@ -131,9 +131,9 @@ agent = LlmAgent(
 
 ## Documentation
 
-Check out the [Agent Development Kit Documentation](https://google.github.io/adk-docs/).
-Check out the [A2A Protocol Documentation](https://google.github.io/A2A/#/documentation).
-Check out the [MCP Server Documentation](https://modelcontextprotocol.io/introduction).
+[Agent Development Kit Documentation](https://google.github.io/adk-docs/)
+[A2A Protocol Documentation](https://google.github.io/A2A/#/documentation)
+[MCP Server Documentation](https://modelcontextprotocol.io/introduction)
 
 
 ## Contributing
