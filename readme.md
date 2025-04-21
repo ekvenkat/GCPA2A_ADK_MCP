@@ -170,7 +170,6 @@ $AGENT_PATH
 1. Fork the repository
 2. Create a feature branch
 3. Submit a pull request with comprehensive description
-4. Pray I have available time to take care of it
 
 
 *This project demonstrates integration between A2A protocol and MCP server capabilities, creating a secure and flexible agent architecture for data processing.*
